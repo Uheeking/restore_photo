@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request
 import os
 from werkzeug.utils import secure_filename
+import noise
 
-UPLOAD_DIR = "/Users/gidaehyeon/Downloads/PreviewContentTransition-main/venv/static"
+upload_file = "/Users/gidaehyeon/Projects/venv/static/img/"
 app = Flask(__name__)
 
 
@@ -21,10 +22,11 @@ def index2():
         f = request.files['file']
         filnames = str(f.filename)
         filenames = str(f.filename.split('.')[-2])
-        #path = os.path.join(app.config['UPLOAD_DIR'], filnames)
-        f.save("/Users/gidaehyeon/"+secure_filename(f.filename))
-        #f.save(secure_filename('/Users/gidaehyeon/Downloads/PreviewContentTransition-main/venv/static/img/' + secure_filename(filnames)))
+        f.save(upload_file+secure_filename(f.filename))
+        noise.main(upload_file+secure_filename(f.filename))
         return render_template('index2.html',data1=f, data2=filnames, data3=filenames)
 
 if __name__ ==  '__main__':
     app.run(host='0.0.0.0', port=8000)
+
+# https://codetorial.net/matplotlib/savefig.html
