@@ -38,11 +38,9 @@
         </div>
         <section class="items">
             <article class="item">
-                <form action="http://localhost:8000/index2" method="POST" enctype="multipart/form-data">
-                    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" />
-                    <div id="image_container"></div>
-                    <input type = "submit"/>
-                </form>
+                <div>
+                    <img src="{{ url_for('static', filename='img_invert/'+name+'.jpg') }}" alt=" ">
+                </div>
                 <div class="item__imgwrap">
                     <div class="item__img" style="background-image:url(1.d7eef1a3.jpg)"></div>
                 </div> <button class="item__enter unbutton"> </button>
@@ -57,10 +55,6 @@
                         class="item__excerpt-link" href="#content-1"><span>Read more</span></a>
                 </div>
             </article>
-            <p>{{data1}}</p>
-            <p>{{data2}}</p>
-            <p>{{data3}}</p>
-            <p>{{data4}}</p>
         </section>
         
         <div class="frame frame--footer">

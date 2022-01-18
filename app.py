@@ -23,8 +23,10 @@ def index2():
         filnames = str(f.filename)
         filenames = str(f.filename.split('.')[-2])
         f.save(upload_file+secure_filename(f.filename))
-        noise.main(upload_file+secure_filename(f.filename))
-        return render_template('index2.html',data1=f, data2=filnames, data3=filenames)
+        
+        name = request.form['text']
+        noise.main(upload_file+secure_filename(f.filename), name)
+        return render_template('index2.html', name=name)
 
 if __name__ ==  '__main__':
     app.run(host='0.0.0.0', port=8000)
